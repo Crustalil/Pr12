@@ -1,0 +1,116 @@
+﻿<Window x:Class="пр12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:пр12"
+        mc:Ignorable="d"
+        Title="Пр12" Height="400" Width="400" ResizeMode="NoResize" Icon="/Babe.ico" >
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="300*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="Файл">
+                <MenuItem Header="О программе" Click="btnInfo_Click">
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Выход" Click="btnExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Действия">
+                <MenuItem Header="Рассчитать площадь и периметр" Click="btnCalculateSandP_Click" x:Name="btnCalculateLength" ToolTip="Кнопка рассчета длины окружности"/>
+                <MenuItem Header="Получить новое число" Click="btnNewDigit_Click" x:Name="btnNewDigit" ToolTip="Вывод полученного нового числа"/>
+            </MenuItem>
+        </Menu>
+
+        <TabControl x:Name="tControl" Margin="10" Grid.Row="1">
+            <TabItem Header="S и P прямоугольника">
+                <Border Margin="0">
+                    <StackPanel Margin="10">
+                        <GroupBox Header="Исходные данные" Margin="0,0,0,10">
+                            <GroupBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Очистить стороны" Click="btnClearSide_Click"/>
+                                    
+                                </ContextMenu>
+                            </GroupBox.ContextMenu>
+                            <StackPanel Margin="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Введите сторону а:" />
+                                    <Label Content="Введите сторону b:" Margin="75,0,0,0" />
+                                </StackPanel>
+                               
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBox x:Name="tbSideA" Width="100"  Padding="3" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="tc1"/>
+                                    <TextBox x:Name="tbSideB" Width="100" Margin="90,0,0,0" Padding="3" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="tc1"/>
+                                </StackPanel>
+                                <Button Content="Рассчитать площадь и периметр" Click="btnCalculateSandP_Click" Margin="5" ToolTip="Кнопка рассчета площади и периметра"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Результат">
+                            <GroupBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Очистить результат" Click="btnClearResult_Click"/>
+                                </ContextMenu>
+                            </GroupBox.ContextMenu>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Площадь:" />
+                                    <Label Content="Периметр:" Margin="85,0,0,0" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox x:Name="tbRezSquare" IsReadOnly="True" Width="120" Margin="10" Padding="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    <TextBox x:Name="tbRezPerimeter" IsReadOnly="True" Width="120" Margin="10" Padding="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            
+                        </GroupBox>
+                    </StackPanel>
+                </Border>
+            </TabItem>
+
+            <TabItem Header="Трехзначное число">
+                <Border >
+                    <StackPanel Margin="10">
+                        <GroupBox Header="Исходные данные" Margin="0,0,0,10">
+                            <GroupBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Очистить" Click="btnDigitClear_Click"/>
+                                </ContextMenu>
+                            </GroupBox.ContextMenu>
+                            <StackPanel Margin="10">
+                                <Label Content="Трехзначное число:" />
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBox x:Name="tbNumber" Width="100" Margin="0,0,5,0" Padding="3" MaxLength="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="tc2"/>
+                                </StackPanel>
+                                <Button Content="Получить новое число" Click="btnNewDigit_Click" Margin="5" ToolTip="Получение нового числа путем прочтение исходного числа справа на лево"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Результат">
+                            <GroupBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Очистить результат" Click="btnClearNewDigit_Click"/>
+                                </ContextMenu>
+                            </GroupBox.ContextMenu>
+                            <TextBox x:Name="tbNewDigitResult" IsReadOnly="True" Margin="10" Padding="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </GroupBox>
+                    </StackPanel>
+                </Border>
+            </TabItem>
+        </TabControl>
+
+        <StatusBar Grid.Row="2" Margin="0,2,0,0">
+            <TextBlock x:Name="tbName" Text="Практическая №12"/>
+            <Separator Background="Black"/>
+            <TextBlock x:Name="tbTime" Text=" "/>
+            <Separator Background="Black"/>
+            <TextBlock x:Name="tbData" Text=" "/>
+        </StatusBar>
+
+    </Grid>
+</Window>
